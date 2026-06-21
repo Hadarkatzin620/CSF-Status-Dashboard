@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)file:///C:/Users/hadark/Downloads/CSF-Status-v2_4.html -->
+<html dir="rtl" lang="he"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSF מקצוענות – תוכנית עבודה 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f5f3;color:#1a1a18;direction:rtl}
+.app{max-width:1400px;margin:0 auto;padding:1.5rem}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid #ddd;flex-wrap:wrap;gap:10px}
+.header-title{font-size:20px;font-weight:600}
+.header-sub{font-size:13px;color:#666;margin-top:3px;display:flex;align-items:center;gap:6px}
+.sync-dot{width:8px;height:8px;border-radius:50%;background:#639922;display:inline-block}
+.header-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.btn{font-size:12px;padding:7px 13px;border:1px solid #ccc;border-radius:6px;background:#fff;color:#1a1a18;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:inherit;white-space:nowrap}
+.btn:hover{background:#f0f0ee}
+.btn.active-edit{background:#E6F1FB;border-color:#185FA5;color:#0C447C}
+.btn.active-manage{background:#EEEDFE;border-color:#534AB7;color:#3C3489}
+.export-group{display:flex;border:1px solid #ccc;border-radius:6px;overflow:hidden}
+.ebtn{font-size:12px;padding:7px 11px;background:#fff;border:none;border-left:1px solid #ccc;color:#1a1a18;cursor:pointer;font-family:inherit;white-space:nowrap}
+.ebtn:hover{background:#f0f0ee}
+.export-label{font-size:11px;color:#888;padding:0 8px;display:flex;align-items:center;border-left:1px solid #ccc}
+.summary-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:1.25rem}
+.summary-card{background:#fff;border:1px solid #e0e0de;border-radius:8px;padding:12px;text-align:center}
+.summary-num{font-size:22px;font-weight:600}
+.summary-label{font-size:11px;color:#888;margin-top:2px}
+.legend{display:flex;gap:14px;margin-bottom:1rem;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:12px;color:#666}
+.dot{width:9px;height:9px;border-radius:50%}
+.goal-2030{background:#1A6BAE;border-radius:8px;padding:10px 14px;margin-bottom:4px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.goal-2030-content{flex:1}
+.goal-2030-num{font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:3px}
+.goal-2030-text{font-size:15px;font-weight:600;color:#fff}
+.annual-goal{background:#EBF3FB;border:1px solid #c5ddf5;border-radius:8px;padding:8px 12px;margin:4px 0 4px 16px}
+.annual-goal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.annual-goal-text{font-size:14px;font-weight:600;flex:1}
+.col-headers{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:6px 0 2px}
+.col-header{font-size:13px;color:#999;text-align:center;font-weight:500;padding:3px}
+.tasks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.task-cell{border:1px solid #e0e0de;border-radius:6px;padding:7px 10px;background:#fff;min-height:60px;position:relative;transition:border-color 0.15s}
+.task-cell.clickable{cursor:pointer}
+.task-cell.clickable:hover{border-color:#999;background:#f8f8f6}
+.task-cell.editable-cell:hover{border-color:#185FA5}
+.task-status-dot{width:8px;height:8px;border-radius:50%;position:absolute;top:8px;left:8px}
+.task-text{font-size:13px;color:#555;line-height:1.4;padding-right:58px;padding-bottom:14px}
+.task-owner-badge{font-size:12px;padding:2px 6px;border-radius:4px;position:absolute;bottom:6px;left:6px;font-weight:500}
+.owner-pmo{background:#E6F1FB;color:#0C447C}
+.owner-cs{background:#EAF3DE;color:#27500A}
+.owner-qa{background:#EEEDFE;color:#3C3489}
+.task-progress-bar{position:absolute;bottom:0;right:0;left:0;height:3px;border-radius:0 0 6px 6px;background:#eee;overflow:hidden}
+.task-status-label{font-size:10px;font-weight:600;position:absolute;top:6px;right:7px;padding:1px 6px;border-radius:3px;color:#fff;line-height:1.5}
+.sl-ns{background:#B0AEA6}.sl-ip{background:#378ADD}.sl-ar{background:#EF9F27}.sl-bl{background:#E24B4A}.sl-dn{background:#639922}
+.task-progress-fill{height:100%;background:#378ADD}
+.rag-indicator{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:3px;vertical-align:middle}
+.xxxx-cell{background:#fafaf8;border:1px dashed #ddd;border-radius:6px;padding:7px;min-height:60px;display:flex;align-items:center;justify-content:center}
+.xxxx-text{font-size:11px;color:#bbb}
+.manage-btn{background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.7);font-size:13px;padding:2px 5px;border-radius:4px}
+.manage-btn:hover{color:#fff;background:rgba(255,255,255,0.2)}
+.manage-btn-gray{background:none;border:none;cursor:pointer;color:#aaa;font-size:12px;padding:2px 5px;border-radius:4px}
+.manage-btn-gray:hover{color:#555;background:#eee}
+.add-annual-btn{display:flex;align-items:center;gap:6px;font-size:12px;color:#aaa;padding:6px 12px;border:1px dashed #ddd;border-radius:6px;background:transparent;cursor:pointer;margin:4px 0 4px 16px;width:calc(100% - 16px);font-family:inherit}
+.add-annual-btn:hover{background:#fafaf8;color:#666}
+.add-task-cell{border:1px dashed #ddd;border-radius:6px;min-height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:transparent;width:100%;font-family:inherit}
+.add-task-cell:hover{background:#fafaf8}
+.add-task-label{font-size:11px;color:#bbb;display:flex;align-items:center;gap:4px}
+.modal-wrap{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:1000}
+.modal{background:#fff;border-radius:10px;border:1px solid #ddd;width:520px;max-width:96vw;max-height:88vh;overflow-y:auto;direction:rtl}
+.modal-sm{width:380px}
+.modal-header{padding:14px 18px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;z-index:10}
+.modal-title{font-size:15px;font-weight:600}
+.modal-close{background:none;border:none;cursor:pointer;color:#999;font-size:22px;line-height:1;padding:0}
+.modal-close:hover{color:#333}
+.modal-body{padding:16px 18px}
+.modal-badge{font-size:11px;color:#666;margin-bottom:12px;padding:4px 8px;background:#f5f5f3;border-radius:4px;display:inline-block}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.field-row.full{grid-template-columns:1fr}
+.field-label{font-size:12px;color:#666;margin-bottom:4px;font-weight:500}
+.field-val{font-size:13px;padding:7px 10px;border:1px solid #ddd;border-radius:6px;background:#fafaf8;width:100%;font-family:inherit}
+.field-val:focus{outline:none;border-color:#185FA5}
+textarea.field-val{resize:vertical;min-height:64px}
+.rag-row{display:flex;gap:8px;margin-top:4px}
+.rag-circle{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer}
+.rag-circle.rag-active{border-color:#1a1a18}
+.rag-r{background:#E24B4A}.rag-a{background:#EF9F27}.rag-g{background:#639922}
+.prog-row{display:flex;align-items:center;gap:10px}
+.prog-bar-bg{flex:1;height:6px;background:#eee;border-radius:3px;overflow:hidden}
+.prog-bar-fill{height:100%;background:#378ADD;border-radius:3px}
+.prog-val{font-size:12px;color:#666;min-width:32px;text-align:left}
+.history-section{margin-top:14px;padding-top:14px;border-top:1px solid #eee}
+.history-title{font-size:12px;font-weight:600;color:#666;margin-bottom:8px}
+.history-item{padding:8px 10px;background:#fafaf8;border-radius:6px;margin-bottom:6px}
+.history-date{font-size:11px;color:#999}
+.history-details{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
+.history-badge{font-size:11px;padding:2px 7px;border-radius:4px;background:#fff;color:#555;border:1px solid #eee}
+.history-note{font-size:12px;color:#333;margin-top:4px}
+.modal-footer{padding:12px 18px;border-top:1px solid #eee;display:flex;justify-content:flex-end;gap:8px;position:sticky;bottom:0;background:#fff}
+.btn-primary{padding:7px 16px;background:#185FA5;color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit}
+.btn-primary:hover{background:#0C447C}
+.btn-primary.purple{background:#534AB7}.btn-primary.purple:hover{background:#3C3489}
+.btn-secondary{padding:7px 16px;background:transparent;color:#666;border:1px solid #ccc;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit}
+.btn-danger{padding:7px 16px;background:#A32D2D;color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer;font-family:inherit}
+.btn-danger:hover{background:#791F1F}
+.view-note{font-size:12px;color:#999;font-style:italic;padding:8px 0;flex:1}
+.delete-zone{margin-top:16px;padding-top:14px;border-top:1px solid #eee}
+.delete-label{font-size:12px;color:#999;margin-bottom:8px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a18;color:#fff;font-size:13px;padding:9px 20px;border-radius:6px;z-index:9999;opacity:0;transition:opacity 0.3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1}
+
+</style>
+</head>
+<body>
+<div class="app">
+  
+  <div class="header">
+    <div>
+      <div class="header-title">CSF מקצוענות – תוכנית עבודה 2026</div>
+      <div class="header-sub">
+        
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="export-group">
+        <span class="export-label">ייצוא</span>
+        <button class="ebtn" onclick="exportMeeting()">📊 לפגישה</button>
+        <button class="ebtn" onclick="exportFull()">🗂 מלא + היסטוריה</button>
+      </div>
+      <button class="btn" id="manageBtn" onclick="toggleManage()">⚙️ <span id="manageBtnText">ניהול תוכן</span></button>
+      <button class="btn" id="editBtn" onclick="toggleEdit()"><span id="editIcon">🔒</span> <span id="editBtnText">מצב עריכה</span></button>
+    </div>
+  </div>
+  <div class="summary-bar" id="summaryBar"><div class="summary-card"><div class="summary-num">57</div><div class="summary-label">סה"כ משימות</div></div><div class="summary-card"><div class="summary-num" style="color:#378ADD">10</div><div class="summary-label">בתהליך</div></div><div class="summary-card"><div class="summary-num" style="color:#EF9F27">0</div><div class="summary-label">בסיכון</div></div><div class="summary-card"><div class="summary-num" style="color:#E24B4A">1</div><div class="summary-label">תקועות</div></div><div class="summary-card"><div class="summary-num" style="color:#639922">5</div><div class="summary-label">הושלמו</div></div></div>
+  <div class="legend">
+    <div class="legend-item"><div class="dot" style="background:#D3D1C7"></div>לא התחיל</div>
+    <div class="legend-item"><div class="dot" style="background:#378ADD"></div>בתהליך</div>
+    <div class="legend-item"><div class="dot" style="background:#EF9F27"></div>בסיכון</div>
+    <div class="legend-item"><div class="dot" style="background:#E24B4A"></div>תקוע</div>
+    <div class="legend-item"><div class="dot" style="background:#639922"></div>הושלם</div>
+  </div>
+  <div id="goalsContainer"><div style="margin-bottom:14px"><div class="goal-2030"><div class="goal-2030-content"><div class="goal-2030-num">יעד 2030 מס׳ 1</div><div class="goal-2030-text">רמת שביעות רצון גבוהה של לקוחות פנימיים וחיצוניים (5-6&nbsp; בשאלון) מרמת האיכות של התוצר והשירות המתקבל מכל אחת מיחידות החברה&nbsp;</div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">יחידה R&amp;D^2 - לכלל הקבוצות/הצוותים ישנם לפחות 2 יעדי שיפור מלקחי הסקר המתורגמים לתוכנית עבודה ומעקב קבוע</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g1a1t1&#39;,&#39;1&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ip">בתהליך</span><div class="task-text">ניתוח מעמיק עם כל אחד מראשי הקבוצות/ צוותים, בחירת נושאים למימוש, בניית ת"ע והגדרת אופן הבקרה </div><div class="task-owner-badge owner-pmo">PMO</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:95%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g1a1t2&#39;,&#39;1&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש שלב ראשון בת"ע בכל אחד מהקבוצות / צוותים (יוגדר בהמשך) </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g1a1t3&#39;,&#39;1&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש שלב שני בת"ע בכל אחד מהקבוצות / צוותים (יוגדר בהמשך) </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">לכל אחת מהיחידות בחברה ישנם לפחות 2 יעדי שיפור מלקחי הסקר המתורגמים לתוכנית עבודה ומעקב קבוע</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g1a2t1&#39;,&#39;1&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ip">בתהליך</span><div class="task-text">מימוש בהתאם לתוכנית של ראש היחידה ובקרה בפורום הנהלה רבעוני </div><div class="task-owner-badge owner-pmo">PMO</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g1a2t2&#39;,&#39;1&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש בהתאם לתוכנית של ראש היחידה ובקרה בפורום הנהלה רבעוני </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g1a2t3&#39;,&#39;1&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש בהתאם לתוכנית של ראש היחידה ובקרה בפורום הנהלה רבעוני </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">מדידה חוזרת - סקר פנימי 2026</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div><div class="task-cell clickable" onclick="openStatus(&#39;t1780208873860bw9y&#39;,&#39;1&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">חשיבה מחודשת לגבי פורמט הסקר </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;t178020894287693dh&#39;,&#39;1&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">ביצוע סקר 2026 (סוף דצמבר) </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">ביצוע סקר חיצוני, ניתוח והפקת מסקנות</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;t1780208760120kken&#39;,&#39;1&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ip">בתהליך</span><div class="task-text">הערכות לביצוע הסקר (כלל המערכות והלקוחות הוותיקים והחדשים) </div><div class="task-owner-badge owner-cs">CS Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;t1780208760120dbbi&#39;,&#39;1&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">ביצוע הסקר וניתוח תוצאות </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;t1780208760120vvxt&#39;,&#39;1&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">גיבוש ואישור תוכנית עבודה למימוש מסקנות הסקר </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div></div><div style="margin-bottom:14px"><div class="goal-2030"><div class="goal-2030-content"><div class="goal-2030-num">יעד 2030 מס׳ 2</div><div class="goal-2030-text">ב- 95%&nbsp; אחוז מפעילויות הפיתוח (פרויקטים/מוצר) עובדים על בסיס תהליך פיתוח מוגדר, אפקטיבי, וממוכן מדיד (על בסיס KPIs)</div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">היחידה עוברת לתהליך פיתוח "גרסה 2" המבוססים על שימוש גורף בסוכני AI ובאופן התואם את ארכיטקטורת יישום מצפן החדשה</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g2a1t1&#39;,&#39;2&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ip">בתהליך</span><div class="task-text">הקמת פורום תהליכים לגיבוש ועדכון נהלי עבודה ביחידה
+ פיצוח ארכיטקטורת המימוש של מצפן ב 3 שכבות
+"קפיצה למים" נרחבת בהטמעת סביבות AI בכלל היחידה </div><div class="task-owner-badge owner-pmo">PMO</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g2a1t2&#39;,&#39;2&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">
+עדכון flow העבודה בכלל היחידה אחרי "הקפיצה למים" בהטמעת סביבות ה AI </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g2a1t3&#39;,&#39;2&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">גיבוש "גרסה 2" של תהליכי הפיתוח כולל: נהלי פיתוח, תפקידנים, טרלו מותאם
+אישור "גרסה 2" בפורום תהליכים ויציאה להטמעה </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">גיבוש ומעבר היחידה לשימוש בכלי בקרה וניהול התהליך- גרסה 1.5</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g2a2t1&#39;,&#39;2&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ip">בתהליך</span><div class="task-text">דילול ועדכון טרלו לצמתים המרכזיות של תהליך הפיתוח כיום - ביצוע - הטמעה - מעקב </div><div class="task-owner-badge owner-pmo">PMO</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g2a2t2&#39;,&#39;2&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">עדכון והמשך הטמעה עד לאישור "גרסה 2" </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">הטמעה של לפחות 5 KPI מרכזיים למדידת תהליך הפיתוח</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g2a3t1&#39;,&#39;2&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ip">בתהליך</span><div class="task-text">אישור ומימוש KPI ראשון </div><div class="task-owner-badge owner-pmo">PMO</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g2a3t2&#39;,&#39;2&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">אישור ומימוש שני KPI נוספים </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g2a3t3&#39;,&#39;2&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">אישור ומימוש שני KPI נוספים </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">כלל התחקירים מרוכזים בצורה יעילה, ומתבצע תהליך יעיל של עדכון תהליך הפיתוח בהתאם ללקחי התחקירים</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g2a4t1&#39;,&#39;2&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ip">בתהליך</span><div class="task-text">המשך ביצוע בפועל בשיטה הקיימת
+
+ </div><div class="task-owner-badge owner-pmo">PMO</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g2a4t2&#39;,&#39;2&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">
+יצירת סיסטם ברור ומבוקר לביצוע הנ"ל - בניית עמוד קונפלואנס עם ריכוז התחקירים לפי SAT FAT  </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g2a4t3&#39;,&#39;2&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">המשך מימוש </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div></div><div style="margin-bottom:14px"><div class="goal-2030"><div class="goal-2030-content"><div class="goal-2030-num">יעד 2030 מס׳ 3</div><div class="goal-2030-text">ב- 90%&nbsp; מפעילויות הפיתוח מתקיים תהליך מלא של CI-CD&nbsp; ממוכן ואוטומטי</div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">בדיקות מודלים – מימוש תוכנית "בוחן פתע"</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g3a1t1&#39;,&#39;3&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-dn">הושלם</span><div class="task-text">אישור התוכנית, הדרכות לכלל מפתחי המודלים, תחילת ביצוע - ספרינט 26 </div><div class="task-owner-badge owner-qa">QA Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g3a1t2&#39;,&#39;3&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש עפ"י מדרגות התוכנית </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g3a1t3&#39;,&#39;3&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש עפ"י מדרגות התוכנית </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">בדיקות מפתח (UT) מבוססות AI </div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g3a2t1&#39;,&#39;3&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">הטמעה במסגרת "דיבור מודרני" גרסה 1 </div><div class="task-owner-badge owner-qa">QA Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">אוטומציה בתהליכי PR</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;t1780207721094zhtw&#39;,&#39;3&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">פיתוח במסגרת "דיבור מודרני" גרסה 2 </div><div class="task-owner-badge owner-qa">QA Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;t1780207721094sata&#39;,&#39;3&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">הטמעת גרסה 2 ופיתוח גרסה 3 </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;t1780207721094hypm&#39;,&#39;3&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">הטמעת גרסה 4 פיתוח גרסה 5 </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">אוטומציה בבדיקות ממשק ופונקציונאליות</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;t1780207767132yb4c&#39;,&#39;3&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ip">בתהליך</span><div class="task-text">תחזוקת הקיים וגיבוש ווקטורים להמשך </div><div class="task-owner-badge owner-qa">QA Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div><div class="task-cell clickable" onclick="openStatus(&#39;t17802077891895sre&#39;,&#39;3&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-dn">הושלם</span><div class="task-text">גיוס מפתח </div><div class="task-owner-badge owner-qa">QA Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div></div><div style="margin-bottom:14px"><div class="goal-2030"><div class="goal-2030-content"><div class="goal-2030-num">יעד 2030 מס׳ 4</div><div class="goal-2030-text">אנו מדרגים את עצמינו&nbsp;&nbsp;5-6 במדד המקצוענות והמקצועיות של כל אחד ואחת מאיתנו</div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">מטופל במסגרת יעד מרכזי מס׳ 1</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div></div></div></div><div style="margin-bottom:14px"><div class="goal-2030"><div class="goal-2030-content"><div class="goal-2030-num">יעד 2030 מס׳ 5</div><div class="goal-2030-text">השירות הכי טוב בעולם - ציון 9 בסקר שביעות רצון מהשירות שלנו</div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">צוות CS מוכשר ברמה גבוהה בתפעול של כלל מערכות החברה בתפוצה. יודע לתת מענה תפעולי בסיסי מלא לכל הלקוחות</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g5a1t1&#39;,&#39;5&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-dn">הושלם</span><div class="task-text">סיום הכשרות תומר ודניאל  </div><div class="task-owner-badge owner-cs">CS Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:100%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g5a1t2&#39;,&#39;5&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">השלמות הכשרות הצוות במערכות: מצפן מיוחדים, נוגה </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g5a1t3&#39;,&#39;5&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">הפקת סרטון הדרכה למערכות המרכזיות שבתפוצה </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;t1780212951165379r&#39;,&#39;5&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-dn">הושלם</span><div class="task-text">חלוקה מחודשת של אחריות לקוחות / מערכות בצוות </div><div class="task-owner-badge owner-cs">CS Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">יצירת מנגנון לתמיכת הלקוחות בצה"ל בחירום (כולל טיפול בכלל המשמעויות פנים/חוץ)</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g5a2t1&#39;,&#39;5&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ip">בתהליך</span><div class="task-text">גיבוש תפיסת התמיכה בחירום בצה"ל - כולל תהליכים/תפקידים ומשמעויות פנים/חוץ </div><div class="task-owner-badge owner-cs">CS Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g5a2t2&#39;,&#39;5&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש שלב 1 </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g5a2t3&#39;,&#39;5&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש שלב 2 </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">השלמת מערכת CRM מלאה כבסיס לקשר רציף עם הלקוחות בארץ ובחו"ל</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g5a3t1&#39;,&#39;5&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-bl">תקוע</span><div class="task-text">קליטת CRM ובניית תיקי לקוח </div><div class="task-owner-badge owner-cs">CS Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g5a3t2&#39;,&#39;5&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">בניית תהליכים במערכת, חיבור למנהלי פרויקטים </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g5a3t3&#39;,&#39;5&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">אוטומציות, חיבור לג'ירה, בניית דשבורדים, ניתוח DATA, תהליכים להכוונת פיתוח המוצר </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">גיבוש תפיסה ומענה לתמיכת הלקוחות בחו"ל</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g5a4t1&#39;,&#39;5&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">ניתוח תמונת הלקוחות בחו"ל וסוג התמיכה הנדרשת וגיבוש מנגנון תמיכה מתאים לכולם </div><div class="task-owner-badge owner-cs">CS Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g5a4t2&#39;,&#39;5&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש שלב 1  </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g5a4t3&#39;,&#39;5&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש שלב 2 </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">מיסוד נוהל דיווח על טיפול בתקלות ללקוחות</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;t1780209457056pte3&#39;,&#39;5&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-dn">הושלם</span><div class="task-text">בניית פורמט דיווח, רשימות ודרכי תפוצה לכלל המערכות שסופקו ללקוחות </div><div class="task-owner-badge owner-cs">CS Lead</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;t1780209457056pcx6&#39;,&#39;5&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש, קבלת פידבק ועדכון </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;t1780209457056qyf3&#39;,&#39;5&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מימוש </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">צוות CS נמדד ומונע ע"ב KPI מתאימים</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div><div class="task-cell clickable" onclick="openStatus(&#39;t17802095297712eva&#39;,&#39;5&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">הגדרה של לפחות 4 KPIים מרכזיים לעבודת הצוות (חווית לקוח, מצוינות תפעולית, שימור לקוחות, הרחבת יכולות) </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;t1780209529771dych&#39;,&#39;5&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">גיבוש מנגנון למדידה ותחילת מדידה </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">התאמת צוות CS לאתגרי העתיד</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div><div class="task-cell clickable" onclick="openStatus(&#39;t1780209582203ky83&#39;,&#39;5&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">ביצוע חשיבה להתארגנות סביב: פרויקטים, PS, ניהול תיקי לקוח, HD </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;t17802095822030fmj&#39;,&#39;5&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">סיכום המחשב, כולל מודלים עסקיים פרקטים ליצירת הכנסות </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div></div><div style="margin-bottom:14px"><div class="goal-2030"><div class="goal-2030-content"><div class="goal-2030-num">יעד 2030 מס׳ 6</div><div class="goal-2030-text"> TTM - אנחנו עונים ב 90% מהמקרים על ה TTM&nbsp; הנדרש מהלקוחות. ב 80% מהתכולות יש לנו מענה עוד טרם הדרישה מהלקוח</div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">ביצוע ניתוח לאחור (עד כמה שהנתונים מאפשרים) למדידת אחוז המענה שלנו ל TTM הנדרש מהלקוחות בהזמנות השונות.</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g6a1t1&#39;,&#39;6&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ip">בתהליך</span><div class="task-text">ניתוח הנתונים שנאספו, הצגה והסקת מסקנות עד כאן </div><div class="task-owner-badge owner-pmo">PMO</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">חשיבה וגיבוש פרמטרים למדידה קדימה של 2 הפרמטרים לעיל</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="task-cell clickable" onclick="openStatus(&#39;g6a2t1&#39;,&#39;6&#39;,&#39;Q2&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">גיבוש פרמטרים למדידה </div><div class="task-owner-badge owner-pmo">PMO</div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g6a2t2&#39;,&#39;6&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מדידה להצעות היוצאות ברבעון 3 </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g6a2t3&#39;,&#39;6&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">מדידה להצעות היוצאות ברבעון 4 </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div><div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">גיבוש תוכנית לטיפול ומדידה של הנ"ל למול תוצאות המחשב המוצרי/אסטרטגי</div></div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid"><div class="xxxx-cell"><span class="xxxx-text">XXXX</span></div><div class="task-cell clickable" onclick="openStatus(&#39;g6a3t2&#39;,&#39;6&#39;,&#39;Q3&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">לימוד תוצאות המחשב והצבעה על הווקטורית שנדרשים לטיפול </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div><div class="task-cell clickable" onclick="openStatus(&#39;g6a3t3&#39;,&#39;6&#39;,&#39;Q4&#39;)"><span class="task-status-label sl-ns">לא התחיל</span><div class="task-text">גיבוש ואישור תוכנית לעמידה ביעד הכפול עבור כל אחד מהווקטורים </div><div class="task-progress-bar"><div class="task-progress-fill" style="width:0%"></div></div></div></div></div></div></div>
+</div>
+
+<div class="modal-wrap" id="statusModal" style="display: none;" onclick="closeOutside(event,&#39;statusModal&#39;)">
+<div class="modal">
+  <div class="modal-header"><div class="modal-title" id="smTitle">תחזוקת הקיים וגיבוש ווקטורים להמשך</div><button class="modal-close" onclick="closeModal(&#39;statusModal&#39;)">×</button></div>
+  <div class="modal-body">
+    <div class="modal-badge" id="smBadge">יעד 2030 מס׳ 3 · Q2 2026</div>
+    <div class="field-row">
+      <div><div class="field-label">Owner</div>
+        <select class="field-val" id="fOwner" disabled="">
+          <option value="">בחר...</option><option value="PMO">PMO</option><option value="CS Lead">CS Lead</option><option value="QA Lead">QA Lead</option>
+        </select>
+      </div>
+      <div><div class="field-label">סטטוס</div>
+        <select class="field-val" id="fStatus" disabled="">
+          <option value="not-started">לא התחיל</option><option value="in-progress">בתהליך</option><option value="at-risk">בסיכון</option><option value="blocked">תקוע</option><option value="done">הושלם</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row">
+      <div><div class="field-label">RAG</div>
+        <div class="rag-row">
+          <div class="rag-circle rag-r" id="ragR" onclick="setRag(&#39;red&#39;)"></div>
+          <div class="rag-circle rag-a" id="ragA" onclick="setRag(&#39;amber&#39;)"></div>
+          <div class="rag-circle rag-g" id="ragG" onclick="setRag(&#39;green&#39;)"></div>
+        </div>
+      </div>
+      <div><div class="field-label">עדיפות</div>
+        <select class="field-val" id="fPriority" disabled="">
+          <option value="high">גבוהה</option><option value="medium">בינונית</option><option value="low">נמוכה</option>
+        </select>
+      </div>
+    </div>
+    <div class="field-row full"><div>
+      <div class="field-label">% התקדמות</div>
+      <div class="prog-row"><input type="range" min="0" max="100" step="1" value="0" id="fProgress" disabled="" style="flex:1" oninput="updateProg(this.value)"><span class="prog-val" id="progVal">0%</span></div>
+      <div class="prog-bar-bg" style="margin-top:6px"><div class="prog-bar-fill" id="progFill" style="width:0%"></div></div>
+    </div></div>
+    <div class="field-row">
+      <div><div class="field-label">תאריך יעד מקורי</div><input type="date" class="field-val" id="fDeadline" disabled=""></div>
+      <div><div class="field-label">תאריך יעד מעודכן</div><input type="date" class="field-val" id="fDeadlineUpd" disabled=""></div>
+    </div>
+    <div class="field-row full"><div><div class="field-label">חסם / תלות</div><textarea class="field-val" id="fBlocker" disabled="" placeholder="תאר חסם או תלות..."></textarea></div></div>
+    <div class="field-row full"><div><div class="field-label">צעד הבא</div><textarea class="field-val" id="fNext" disabled="" placeholder="מה הפעולה הבאה?"></textarea></div></div>
+    <div class="field-row full"><div><div class="field-label">הערות</div><textarea class="field-val" id="fNotes" disabled="" placeholder="הערות נוספות..."></textarea></div></div>
+    <div class="history-section"><div class="history-title">היסטוריית עדכונים</div><div id="historyList"><div class="history-item"><div class="history-date">17.6.2026</div><div class="history-details"><span class="history-badge">📋 בתהליך</span><span class="history-badge">👤 QA Lead</span><span class="history-badge">📊 0%</span></div><div class="history-note">💬 2 הווקטורים: 1. יישור האוטומציות לסביבת DEV, הרצה שלהם יחד עם איש הQA לבדיקת תקינות (משלב זה, לא תתקבל גרסה בלי הרצת אוטומציה). 2. בניית אוטומציה ברמת הרכיב ולא תרחיש למניעת רגרסיות בקליינט</div></div><div class="history-item"><div class="history-date">17.6.2026</div><div class="history-details"><span class="history-badge">📋 בתהליך</span><span class="history-badge">👤 QA Lead</span><span class="history-badge">📊 0%</span></div><div class="history-note">💬 2 הווקטורים: 1. יישור האוטומציות לסביבת DEV, הרצה שלהם יחד עם איש הQA לבדיקת תקינות (משלב זה, לא תתקבל גרסה בלי הרצת אוטומציה). 2. בניית אוטומציה ברמת הרכיב ולא תרחיש למניעת רגרסיות בקליינט</div></div><div class="history-item"><div class="history-date">17.6.2026</div><div class="history-details"><span class="history-badge">📋 בתהליך</span><span class="history-badge">👤 QA Lead</span><span class="history-badge">📊 0%</span></div><div class="history-note">💬 תחזוקת הקיים - בספרינט 25 היה פעם ראשונה מעקב אחרי איכות של הגרסה מבחינת באגים, עכשיו עוברים על כל הטסטים עושים plan review - סיווג של הטסטים.
+גיבוש ווקטורים להמשך - קיימת תוכנית עבודה - נדרש לפרוט לTasks בJira. שבוע הבא - Tasks יהיו בתוך הJira כחלק מספרינט 26.</div></div><div class="history-item"><div class="history-date">15.6.2026</div><div class="history-details"><span class="history-badge">📋 בתהליך</span><span class="history-badge">👤 QA Lead</span><span class="history-badge">📊 0%</span></div><div class="history-note">➡️ 2 הוקטורים: 1. </div><div class="history-note">💬 תחזוקת הקיים - בספרינט 25 היה פעם ראשונה מעקב אחרי איכות של הגרסה מבחינת באגים, עכשיו עוברים על כל הטסטים עושים plan review - סיווג של הטסטים.
+גיבוש ווקטורים להמשך - קיימת תוכנית עבודה - נדרש לפרוט לTasks בJira. שבוע הבא - Tasks יהיו בתוך הJira כחלק מספרינט 26.</div></div><div class="history-item"><div class="history-date">15.6.2026</div><div class="history-details"><span class="history-badge">📋 בתהליך</span><span class="history-badge">👤 QA Lead</span><span class="history-badge">📊 0%</span></div><div class="history-note">💬 תחזוקת הקיים - בספרינט 25 היה פעם ראשונה מעקב אחרי איכות של הגרסה מבחינת באגים, עכשיו עוברים על כל הטסטים עושים plan review - סיווג של הטסטים.
+גיבוש ווקטורים להמשך - קיימת תוכנית עבודה - נדרש לפרוט לTasks בJira. שבוע הבא - Tasks יהיו בתוך הJira כחלק מספרינט 26.</div></div><div class="history-item"><div class="history-date">31.5.2026</div><div class="history-details"><span class="history-badge">📋 לא התחיל</span><span class="history-badge">👤 QA Lead</span><span class="history-badge">📊 0%</span></div><div class="history-note">💬 תחזוקת הקיים - בספרינט 25 היה פעם ראשונה מעקב אחרי איכות של הגרסה מבחינת באגים, עכשיו עוברים על כל הטסטים עושים plan review - סיווג של הטסטים.
+גיבוש ווקטורים להמשך - קיימת תוכנית עבודה - נדרש לפרוט לTasks בJira. שבוע הבא - Tasks יהיו בתוך הJira כחלק מספרינט 26.</div></div><div class="history-item"><div class="history-date">31.5.2026</div><div class="history-details"><span class="history-badge">📋 לא התחיל</span><span class="history-badge">👤 QA Lead</span><span class="history-badge">📊 0%</span></div></div></div></div>
+  </div>
+  <div class="modal-footer" id="smFooter"><div class="view-note">מצב צפייה – עבור למצב עריכה לעדכון</div></div>
+</div>
+</div>
+
+<div class="modal-wrap" id="editContentModal" style="display:none" onclick="closeOutside(event,&#39;editContentModal&#39;)">
+<div class="modal modal-sm">
+  <div class="modal-header"><div class="modal-title" id="ecTitle">עריכת פריט</div><button class="modal-close" onclick="closeModal(&#39;editContentModal&#39;)">×</button></div>
+  <div class="modal-body">
+    <div class="field-row full" id="ecFields"></div>
+    <div id="ecDeleteZone"></div>
+  </div>
+  <div class="modal-footer"><button class="btn-secondary" onclick="closeModal(&#39;editContentModal&#39;)">ביטול</button><button class="btn-primary purple" onclick="saveContentEdit()">שמור</button></div>
+</div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const SK='csf_local_v1';
+let isEdit=false,isManage=false,curTask=null,curRag=null,ecMode=null,ecRef=null;
+let appData={goals:null,statuses:{}};
+
+const statusHe={'not-started':'לא התחיל','in-progress':'בתהליך','at-risk':'בסיכון','blocked':'תקוע','done':'הושלם'};
+const ragHe={'red':'🔴 אדום','amber':'🟡 צהוב','green':'🟢 ירוק'};
+const priorityHe={'high':'גבוהה','medium':'בינונית','low':'נמוכה'};
+
+const defaultGoals=[
+  {id:'g1',num:'1',text:'רמת שביעות רצון גבוהה של לקוחות פנימיים וחיצוניים (5-6 בשאלון)',annuals:[
+    {id:'g1a1',text:'R&D² – לפחות 2 יעדי שיפור מלקחי הסקר לכל קבוצה/צוות עם ת"ע ומעקב',tasks:[{id:'g1a1t1',q:'Q2',text:'ניתוח עם ראשי קבוצות, בחירת נושאים ובניית ת"ע'},{id:'g1a1t2',q:'Q3',text:'מימוש שלב ראשון בת"ע בכל קבוצה/צוות'},{id:'g1a1t3',q:'Q4',text:'מימוש שלב שני בת"ע'}]},
+    {id:'g1a2',text:'לכל יחידה בחברה – לפחות 2 יעדי שיפור מלקחי הסקר עם ת"ע ומעקב',tasks:[{id:'g1a2t1',q:'Q2',text:'מימוש לפי תוכנית ראש היחידה ובקרה רבעוני'},{id:'g1a2t2',q:'Q3',text:'מימוש לפי תוכנית ראש היחידה ובקרה רבעוני'},{id:'g1a2t3',q:'Q4',text:'מימוש לפי תוכנית ראש היחידה ובקרה רבעוני'}]},
+    {id:'g1a3',text:'מדידה חוזרת – סקר פנימי 2026 וסקר חיצוני',tasks:[{id:'g1a3t1',q:'Q2',text:'הערכות לביצוע הסקר החיצוני'},{id:'g1a3t2',q:'Q3',text:'ביצוע הסקר החיצוני + חשיבה מחודשת לפורמט הפנימי'},{id:'g1a3t3',q:'Q4',text:'גיבוש ת"ע למסקנות + ביצוע סקר פנימי 2026'}]}
+  ]},
+  {id:'g2',num:'2',text:'ב-95% מפעילויות הפיתוח עובדים על בסיס תהליך פיתוח מוגדר, אפקטיבי וממוכן (KPIs)',annuals:[
+    {id:'g2a1',text:'מעבר לתהליך פיתוח "גרסה 2" המבוסס על שימוש גורף בסוכני AI',tasks:[{id:'g2a1t1',q:'Q2',text:'פורום תהליכים, ארכיטקטורת מצפן 3 שכבות, "קפיצה למים"'},{id:'g2a1t2',q:'Q3',text:'עדכון flow העבודה בכלל היחידה'},{id:'g2a1t3',q:'Q4',text:'גיבוש "גרסה 2" ואישור בפורום תהליכים'}]},
+    {id:'g2a2',text:'גיבוש ומעבר לכלי בקרה וניהול תהליך – גרסה 1.5',tasks:[{id:'g2a2t1',q:'Q2',text:'דילול ועדכון טרלו לצמתים מרכזיות'},{id:'g2a2t2',q:'Q3',text:'עדכון והמשך הטמעה עד אישור "גרסה 2"'},{id:'g2a2t3',q:'Q4',text:'XXXX'}]},
+    {id:'g2a3',text:'הטמעה של לפחות 5 KPI מרכזיים למדידת תהליך הפיתוח',tasks:[{id:'g2a3t1',q:'Q2',text:'אישור ומימוש KPI ראשון'},{id:'g2a3t2',q:'Q3',text:'אישור ומימוש שני KPI נוספים'},{id:'g2a3t3',q:'Q4',text:'אישור ומימוש שני KPI נוספים'}]},
+    {id:'g2a4',text:'כלל התחקירים מרוכזים ומתבצע תהליך יעיל של עדכון לפי הלקחים',tasks:[{id:'g2a4t1',q:'Q2',text:'המשך ביצוע בשיטה הקיימת'},{id:'g2a4t2',q:'Q3',text:'סיסטם ברור – עמוד קונפלואנס עם ריכוז תחקירים'},{id:'g2a4t3',q:'Q4',text:'המשך מימוש ומדידת שיקוף שימוש'}]}
+  ]},
+  {id:'g3',num:'3',text:'ב-90% מפעילויות הפיתוח מתקיים תהליך מלא של CI-CD ממוכן ואוטומטי',annuals:[
+    {id:'g3a1',text:'בדיקות מודלים – מימוש תוכנית "בוחן פתע"',tasks:[{id:'g3a1t1',q:'Q2',text:'אישור תוכנית, הדרכות, תחילת ביצוע ספרינט 26'},{id:'g3a1t2',q:'Q3',text:'מימוש עפ"י מדרגות התוכנית'},{id:'g3a1t3',q:'Q4',text:'מימוש עפ"י מדרגות התוכנית'}]},
+    {id:'g3a2',text:'בדיקות מפתח (UT) מבוססות AI ואוטומציה בתהליכי PR',tasks:[{id:'g3a2t1',q:'Q2',text:'הטמעת UT גרסה 1 + פיתוח PR גרסה 2'},{id:'g3a2t2',q:'Q3',text:'הטמעת PR גרסה 2 + פיתוח גרסה 3'},{id:'g3a2t3',q:'Q4',text:'הטמעת גרסה 4 + פיתוח גרסה 5'}]},
+    {id:'g3a3',text:'אוטומציה בבדיקות ממשק ופונקציונאליות',tasks:[{id:'g3a3t1',q:'Q2',text:'תחזוקת הקיים, גיוס מפתח, גיבוש וקטורים'},{id:'g3a3t2',q:'Q3',text:'TBD'},{id:'g3a3t3',q:'Q4',text:'TBD'}]}
+  ]},
+  {id:'g4',num:'4',text:'אנו מדרגים את עצמנו 5-6 במדד המקצוענות והמקצועיות',annuals:[
+    {id:'g4a1',text:'מטופל במסגרת יעד מרכזי מס׳ 1',tasks:[{id:'g4a1t1',q:'Q2',text:'XXXX'},{id:'g4a1t2',q:'Q3',text:'XXXX'},{id:'g4a1t3',q:'Q4',text:'XXXX'}]}
+  ]},
+  {id:'g5',num:'5',text:'השירות הכי טוב בעולם – ציון 9 בסקר שביעות רצון',annuals:[
+    {id:'g5a1',text:'צוות CS מוכשר ברמה גבוהה בתפעול כלל מערכות החברה',tasks:[{id:'g5a1t1',q:'Q2',text:'סיום הכשרות תומר ודניאל + חלוקה מחודשת אחריות'},{id:'g5a1t2',q:'Q3',text:'השלמות הכשרות: פנד"א, מצפן מיוחדים, נוגה'},{id:'g5a1t3',q:'Q4',text:'הפקת סרטון הדרכה למערכות המרכזיות'}]},
+    {id:'g5a2',text:'מנגנון לתמיכת לקוחות בצה"ל בחירום',tasks:[{id:'g5a2t1',q:'Q2',text:'גיבוש תפיסת תמיכה בחירום – תהליכים ותפקידים'},{id:'g5a2t2',q:'Q3',text:'מימוש שלב 1'},{id:'g5a2t3',q:'Q4',text:'מימוש שלב 2'}]},
+    {id:'g5a3',text:'השלמת מערכת CRM מלאה לקשר רציף עם לקוחות',tasks:[{id:'g5a3t1',q:'Q2',text:'קליטת CRM ובניית תיקי לקוח'},{id:'g5a3t2',q:'Q3',text:'בניית תהליכים, חיבור למנהלי פרויקטים'},{id:'g5a3t3',q:'Q4',text:'אוטומציות, חיבור לג\'ירה, דשבורדים, DATA'}]},
+    {id:'g5a4',text:'תמיכת לקוחות חו"ל + מיסוד נוהל דיווח תקלות',tasks:[{id:'g5a4t1',q:'Q2',text:'ניתוח לקוחות חו"ל + בניית פורמט דיווח'},{id:'g5a4t2',q:'Q3',text:'מימוש שלב 1 + פידבק'},{id:'g5a4t3',q:'Q4',text:'מימוש שלב 2'}]},
+    {id:'g5a5',text:'צוות CS נמדד ע"ב KPIים + התאמה לאתגרי העתיד',tasks:[{id:'g5a5t1',q:'Q2',text:'XXXX'},{id:'g5a5t2',q:'Q3',text:'הגדרת 4 KPIים + חשיבה על התארגנות עתידית'},{id:'g5a5t3',q:'Q4',text:'מנגנון מדידה + סיכום מחשב'}]}
+  ]},
+  {id:'g6',num:'6',text:'TTM – עונים ב-90% על TTM הנדרש; ב-80% מהתכולות מענה טרם הדרישה',annuals:[
+    {id:'g6a1',text:'ניתוח לאחור למדידת אחוז המענה ל-TTM',tasks:[{id:'g6a1t1',q:'Q2',text:'ניתוח הנתונים, הצגה והסקת מסקנות'},{id:'g6a1t2',q:'Q3',text:'XXXX'},{id:'g6a1t3',q:'Q4',text:'XXXX'}]},
+    {id:'g6a2',text:'גיבוש פרמטרים למדידה קדימה של 2 הפרמטרים',tasks:[{id:'g6a2t1',q:'Q2',text:'גיבוש פרמטרים למדידה'},{id:'g6a2t2',q:'Q3',text:'מדידה להצעות יוצאות ברבעון 3'},{id:'g6a2t3',q:'Q4',text:'מדידה להצעות יוצאות ברבעון 4'}]},
+    {id:'g6a3',text:'תוכנית לטיפול ומדידה של TTM למול תוצאות המחשב האסטרטגי',tasks:[{id:'g6a3t1',q:'Q2',text:'XXXX'},{id:'g6a3t2',q:'Q3',text:'לימוד תוצאות המחשב, הצבעה על וקטורים'},{id:'g6a3t3',q:'Q4',text:'גיבוש ואישור תוכנית לכל וקטור'}]}
+  ]}
+];
+
+function loadData(){
+  try{
+    const r=localStorage.getItem(SK);
+    if(r) appData=JSON.parse(r);
+    if(!appData.goals) appData.goals=JSON.parse(JSON.stringify(defaultGoals));
+    if(!appData.statuses) appData.statuses={};
+  }catch(e){
+    appData={goals:JSON.parse(JSON.stringify(defaultGoals)),statuses:{}};
+  }
+}
+
+function saveData(){
+  try{
+    localStorage.setItem(SK,JSON.stringify(appData));
+    
+  }catch(e){}
+}
+
+function uid(){return 't'+Date.now()+Math.random().toString(36).slice(2,6);}
+function statusColor(s){return{'not-started':'#D3D1C7','in-progress':'#378ADD','at-risk':'#EF9F27','blocked':'#E24B4A','done':'#639922'}[s]||'#D3D1C7';}
+function ownerClass(o){return o==='PMO'?'owner-pmo':o==='CS Lead'?'owner-cs':o==='QA Lead'?'owner-qa':'';}
+function getTask(id){return appData.statuses[id]||{status:'not-started',owner:'',rag:null,priority:'medium',progress:0,deadline:'',deadlineUpdated:'',blocker:'',nextStep:'',notes:'',history:[]};}
+function getGoals(){return appData.goals||defaultGoals;}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+
+function renderSummary(){
+  let total=0,c={'in-progress':0,'at-risk':0,'blocked':0,'done':0};
+  getGoals().forEach(g=>g.annuals.forEach(a=>a.tasks.forEach(t=>{if(t.text==='XXXX'||t.text==='TBD')return;total++;const s=getTask(t.id).status;if(c[s]!==undefined)c[s]++;})));
+  document.getElementById('summaryBar').innerHTML=`<div class="summary-card"><div class="summary-num">${total}</div><div class="summary-label">סה"כ משימות</div></div><div class="summary-card"><div class="summary-num" style="color:#378ADD">${c['in-progress']}</div><div class="summary-label">בתהליך</div></div><div class="summary-card"><div class="summary-num" style="color:#EF9F27">${c['at-risk']}</div><div class="summary-label">בסיכון</div></div><div class="summary-card"><div class="summary-num" style="color:#E24B4A">${c['blocked']}</div><div class="summary-label">תקועות</div></div><div class="summary-card"><div class="summary-num" style="color:#639922">${c['done']}</div><div class="summary-label">הושלמו</div></div>`;
+}
+
+function renderGoals(){
+  const c=document.getElementById('goalsContainer');c.innerHTML='';
+  getGoals().forEach(g=>{
+    let h=`<div style="margin-bottom:14px"><div class="goal-2030"><div class="goal-2030-content"><div class="goal-2030-num">יעד 2030 מס׳ ${g.num}</div><div class="goal-2030-text">${g.text}</div></div>${isManage?`<button class="manage-btn" onclick="editGoal('${g.id}')">✏️</button>`:''}</div>`;
+    g.annuals.forEach(a=>{
+      h+=`<div class="annual-goal"><div class="annual-goal-header"><div class="annual-goal-text">${a.text}</div>${isManage?`<div style="display:flex;gap:4px"><button class="manage-btn-gray" onclick="editAnnual('${g.id}','${a.id}')">✏️</button><button class="manage-btn-gray" onclick="deleteAnnual('${g.id}','${a.id}')">🗑</button></div>`:''}</div><div class="col-headers"><div class="col-header">Q2 2026</div><div class="col-header">Q3 2026</div><div class="col-header">Q4 2026</div></div><div class="tasks-grid">`;
+      a.tasks.forEach(t=>{
+        const isX=t.text==='XXXX'||t.text==='TBD';
+        if(isX){h+=`<div class="xxxx-cell">${isManage?`<button class="manage-btn-gray" onclick="editTask('${g.id}','${a.id}','${t.id}')">✏️ ${t.text}</button>`:`<span class="xxxx-text">${t.text}</span>`}</div>`;}
+        else{
+          const td=getTask(t.id);
+          const slMap={'not-started':['sl-ns','לא התחיל'],'in-progress':['sl-ip','בתהליך'],'at-risk':['sl-ar','בסיכון'],'blocked':['sl-bl','תקוע'],'done':['sl-dn','הושלם']};const sl=slMap[td.status]||slMap['not-started'];
+          const rag=td.rag?`<span class="rag-indicator" style="background:${td.rag==='red'?'#E24B4A':td.rag==='amber'?'#EF9F27':'#639922'}"></span>`:'';
+          const cls=isManage?'task-cell':'task-cell clickable'+(isEdit?' editable-cell':'');
+          const click=isManage?`editTask('${g.id}','${a.id}','${t.id}')`:`openStatus('${t.id}','${g.num}','${t.q}')`;
+          h+=`<div class="${cls}" onclick="${click}"><span class="task-status-label ${sl[0]}">${sl[1]}</span><div class="task-text">${t.text} ${rag}</div>${td.owner?`<div class="task-owner-badge ${ownerClass(td.owner)}">${td.owner}</div>`:''}<div class="task-progress-bar"><div class="task-progress-fill" style="width:${td.progress||0}%"></div></div></div>`;
+        }
+      });
+      if(isManage){h+=`<button class="add-task-cell" onclick="addTask('${g.id}','${a.id}','Q2')"><span class="add-task-label">+ Q2</span></button><button class="add-task-cell" onclick="addTask('${g.id}','${a.id}','Q3')"><span class="add-task-label">+ Q3</span></button><button class="add-task-cell" onclick="addTask('${g.id}','${a.id}','Q4')"><span class="add-task-label">+ Q4</span></button>`;}
+      h+=`</div></div>`;
+    });
+    if(isManage)h+=`<button class="add-annual-btn" onclick="addAnnual('${g.id}')">+ הוסף יעד שנתי</button>`;
+    h+=`</div>`;c.innerHTML+=h;
+  });
+}
+
+function toggleEdit(){isEdit=!isEdit;if(isManage){isManage=false;document.getElementById('manageBtn').className='btn';document.getElementById('manageBtnText').textContent='ניהול תוכן';}document.getElementById('editBtn').className='btn'+(isEdit?' active-edit':'');document.getElementById('editIcon').textContent=isEdit?'✏️':'🔒';document.getElementById('editBtnText').textContent=isEdit?'מצב צפייה':'מצב עריכה';renderGoals();}
+function toggleManage(){isManage=!isManage;if(isEdit){isEdit=false;document.getElementById('editBtn').className='btn';document.getElementById('editIcon').textContent='🔒';document.getElementById('editBtnText').textContent='מצב עריכה';}document.getElementById('manageBtn').className='btn'+(isManage?' active-manage':'');document.getElementById('manageBtnText').textContent=isManage?'סיים ניהול':'ניהול תוכן';renderGoals();if(isManage)showToast('מצב ניהול – ✏️ לעריכה, + להוספה');}
+
+function findTask(id){for(const g of getGoals())for(const a of g.annuals)for(const t of a.tasks)if(t.id===id)return{task:t,annual:a,goal:g};return null;}
+
+function openStatus(id,gNum,q){
+  const f=findTask(id);if(!f)return;
+  curTask=id;const td=getTask(id);curRag=td.rag;
+  document.getElementById('smTitle').textContent=f.task.text;
+  document.getElementById('smBadge').textContent=`יעד 2030 מס׳ ${gNum} · ${q} 2026`;
+  const ed=isEdit;
+  ['fOwner','fStatus','fPriority','fProgress','fDeadline','fDeadlineUpd','fBlocker','fNext','fNotes'].forEach(i=>{const el=document.getElementById(i);if(el)el.disabled=!ed;});
+  document.getElementById('fOwner').value=td.owner||'';document.getElementById('fStatus').value=td.status||'not-started';document.getElementById('fPriority').value=td.priority||'medium';
+  document.getElementById('fProgress').value=td.progress||0;updateProg(td.progress||0);
+  document.getElementById('fDeadline').value=td.deadline||'';document.getElementById('fDeadlineUpd').value=td.deadlineUpdated||'';
+  document.getElementById('fBlocker').value=td.blocker||'';document.getElementById('fNext').value=td.nextStep||'';document.getElementById('fNotes').value=td.notes||'';
+  updateRagUI();
+  const hist=td.history||[];
+  document.getElementById('historyList').innerHTML=hist.length===0?`<div style="font-size:12px;color:#bbb;font-style:italic">אין עדכונים קודמים</div>`:hist.slice().reverse().map(h=>`<div class="history-item"><div class="history-date">${h.date}</div><div class="history-details">${h.status?`<span class="history-badge">📋 ${statusHe[h.status]||h.status}</span>`:''}${h.owner?`<span class="history-badge">👤 ${h.owner}</span>`:''}${h.progress!=null?`<span class="history-badge">📊 ${h.progress}%</span>`:''}${h.rag?`<span class="history-badge">${ragHe[h.rag]||h.rag}</span>`:''}</div>${h.blocker?`<div class="history-note" style="color:#A32D2D">🚧 ${h.blocker}</div>`:''}${h.nextStep?`<div class="history-note">➡️ ${h.nextStep}</div>`:''}${h.notes?`<div class="history-note">💬 ${h.notes}</div>`:''}</div>`).join('');
+  document.getElementById('smFooter').innerHTML=ed?`<button class="btn-secondary" onclick="closeModal('statusModal')">ביטול</button><button class="btn-primary" onclick="saveStatus()">שמור עדכון</button>`:`<div class="view-note">מצב צפייה – עבור למצב עריכה לעדכון</div>`;
+  document.getElementById('statusModal').style.display='flex';
+}
+
+function setRag(c){curRag=curRag===c?null:c;updateRagUI();}
+function updateRagUI(){[['R','red'],['A','amber'],['G','green']].forEach(([l,c])=>{const el=document.getElementById('rag'+l);if(el)el.className=`rag-circle rag-${l.toLowerCase()}${curRag===c?' rag-active':''}`;});}
+function updateProg(v){document.getElementById('progVal').textContent=Math.round(v)+'%';document.getElementById('progFill').style.width=Math.round(v)+'%';}
+
+function saveStatus(){
+  if(!curTask)return;
+  const td=getTask(curTask);const now=new Date().toLocaleDateString('he-IL');
+  td.owner=document.getElementById('fOwner').value;td.status=document.getElementById('fStatus').value;td.rag=curRag;td.priority=document.getElementById('fPriority').value;
+  td.progress=parseInt(document.getElementById('fProgress').value)||0;td.deadline=document.getElementById('fDeadline').value;td.deadlineUpdated=document.getElementById('fDeadlineUpd').value;
+  td.blocker=document.getElementById('fBlocker').value;td.nextStep=document.getElementById('fNext').value;td.notes=document.getElementById('fNotes').value;
+  if(!td.history)td.history=[];
+  td.history.push({date:now,status:td.status,owner:td.owner,rag:td.rag,priority:td.priority,progress:td.progress,blocker:td.blocker,nextStep:td.nextStep,notes:td.notes});
+  appData.statuses[curTask]=td;
+  saveData();closeModal('statusModal');renderGoals();renderSummary();showToast('עודכן ✓');
+}
+
+function openEcModal(title,fields){document.getElementById('ecTitle').textContent=title;document.getElementById('ecFields').innerHTML=fields;document.getElementById('editContentModal').style.display='flex';}
+function editGoal(gid){const g=getGoals().find(x=>x.id===gid);if(!g)return;ecMode='editGoal';ecRef={gid};openEcModal('עריכת יעד 2030',`<div><div class="field-label">טקסט</div><textarea class="field-val" id="ecText" style="min-height:80px">${g.text}</textarea></div><div style="margin-top:12px"><div class="field-label">מספר</div><input type="text" class="field-val" id="ecNum" value="${g.num}"></div>`);document.getElementById('ecDeleteZone').innerHTML='';}
+function editAnnual(gid,aid){const g=getGoals().find(x=>x.id===gid);if(!g)return;const a=g.annuals.find(x=>x.id===aid);if(!a)return;ecMode='editAnnual';ecRef={gid,aid};openEcModal('עריכת יעד שנתי',`<div><div class="field-label">טקסט</div><textarea class="field-val" id="ecText" style="min-height:80px">${a.text}</textarea></div>`);document.getElementById('ecDeleteZone').innerHTML=`<div class="delete-zone"><div class="delete-label">פעולה מסוכנת</div><button class="btn-danger" onclick="deleteAnnual('${gid}','${aid}')">מחק יעד שנתי</button></div>`;}
+function addAnnual(gid){ecMode='addAnnual';ecRef={gid};openEcModal('הוספת יעד שנתי',`<div><div class="field-label">טקסט</div><textarea class="field-val" id="ecText" style="min-height:80px" placeholder="תאר..."></textarea></div>`);document.getElementById('ecDeleteZone').innerHTML='';}
+function editTask(gid,aid,tid){const g=getGoals().find(x=>x.id===gid);if(!g)return;const a=g.annuals.find(x=>x.id===aid);if(!a)return;const t=a.tasks.find(x=>x.id===tid);if(!t)return;ecMode='editTask';ecRef={gid,aid,tid};openEcModal('עריכת משימה',`<div><div class="field-label">רבעון</div><select class="field-val" id="ecQ"><option value="Q2"${t.q==='Q2'?' selected':''}>Q2</option><option value="Q3"${t.q==='Q3'?' selected':''}>Q3</option><option value="Q4"${t.q==='Q4'?' selected':''}>Q4</option></select></div><div style="margin-top:12px"><div class="field-label">תיאור</div><textarea class="field-val" id="ecText" style="min-height:80px">${t.text}</textarea></div>`);document.getElementById('ecDeleteZone').innerHTML=`<div class="delete-zone"><div class="delete-label">פעולה מסוכנת</div><button class="btn-danger" onclick="deleteTask('${gid}','${aid}','${tid}')">מחק משימה</button></div>`;}
+function addTask(gid,aid,q){ecMode='addTask';ecRef={gid,aid,q};openEcModal(`הוספת משימה – ${q}`,`<div><div class="field-label">תיאור</div><textarea class="field-val" id="ecText" style="min-height:80px" placeholder="תאר..."></textarea></div>`);document.getElementById('ecDeleteZone').innerHTML='';}
+
+function saveContentEdit(){
+  const goals=getGoals();
+  if(ecMode==='editGoal'){const g=goals.find(x=>x.id===ecRef.gid);if(g){g.text=document.getElementById('ecText').value;g.num=document.getElementById('ecNum').value;}}
+  else if(ecMode==='editAnnual'){const g=goals.find(x=>x.id===ecRef.gid);if(g){const a=g.annuals.find(x=>x.id===ecRef.aid);if(a)a.text=document.getElementById('ecText').value;}}
+  else if(ecMode==='addAnnual'){const g=goals.find(x=>x.id===ecRef.gid);const txt=document.getElementById('ecText').value.trim();if(g&&txt)g.annuals.push({id:uid(),text:txt,tasks:[{id:uid(),q:'Q2',text:'XXXX'},{id:uid(),q:'Q3',text:'XXXX'},{id:uid(),q:'Q4',text:'XXXX'}]});}
+  else if(ecMode==='editTask'){const g=goals.find(x=>x.id===ecRef.gid);if(g){const a=g.annuals.find(x=>x.id===ecRef.aid);if(a){const t=a.tasks.find(x=>x.id===ecRef.tid);if(t){t.text=document.getElementById('ecText').value;t.q=document.getElementById('ecQ').value;}}}}
+  else if(ecMode==='addTask'){const g=goals.find(x=>x.id===ecRef.gid);const txt=document.getElementById('ecText').value.trim();if(g&&txt){const a=g.annuals.find(x=>x.id===ecRef.aid);if(a)a.tasks.push({id:uid(),q:ecRef.q,text:txt});}}
+  appData.goals=goals;saveData();closeModal('editContentModal');renderGoals();renderSummary();showToast('נשמר ✓');
+}
+function deleteAnnual(gid,aid){if(!confirm('למחוק?'))return;const goals=getGoals();const g=goals.find(x=>x.id===gid);if(g)g.annuals=g.annuals.filter(x=>x.id!==aid);appData.goals=goals;saveData();closeModal('editContentModal');renderGoals();renderSummary();showToast('נמחק ✓');}
+function deleteTask(gid,aid,tid){if(!confirm('למחוק?'))return;const goals=getGoals();const g=goals.find(x=>x.id===gid);if(g){const a=g.annuals.find(x=>x.id===aid);if(a)a.tasks=a.tasks.filter(x=>x.id!==tid);}appData.goals=goals;saveData();closeModal('editContentModal');renderGoals();renderSummary();showToast('נמחק ✓');}
+function closeModal(id){document.getElementById(id).style.display='none';curTask=null;}
+function closeOutside(e,id){if(e.target.id===id)closeModal(id);}
+
+function buildMeetingRows(){const rows=[['יעד 2030','מס׳','יעד שנתי','רבעון','משימה','Owner','סטטוס','RAG','%','תאריך יעד','תאריך מעודכן','עדיפות','חסם','צעד הבא','הערות']];getGoals().forEach(g=>g.annuals.forEach(a=>a.tasks.forEach(t=>{if(t.text==='XXXX'||t.text==='TBD')return;const td=getTask(t.id);rows.push([g.text,g.num,a.text,t.q+' 2026',t.text,td.owner,statusHe[td.status]||'',ragHe[td.rag]||'',td.progress+'%',td.deadline,td.deadlineUpdated,priorityHe[td.priority]||'',td.blocker,td.nextStep,td.notes]);})));return rows;}
+function buildHistoryRows(){const rows=[['תאריך','יעד 2030','יעד שנתי','רבעון','משימה','Owner','סטטוס','RAG','%','חסם','צעד הבא','הערות']];getGoals().forEach(g=>g.annuals.forEach(a=>a.tasks.forEach(t=>{if(t.text==='XXXX'||t.text==='TBD')return;const td=getTask(t.id);(td.history||[]).forEach(h=>{rows.push([h.date,g.text,a.text,t.q+' 2026',t.text,h.owner,statusHe[h.status]||'',ragHe[h.rag]||'',h.progress!=null?h.progress+'%':'',h.blocker,h.nextStep,h.notes]);});})));return rows;}
+function rowsToCsv(rows){return rows.map(r=>r.map(c=>'"'+(String(c||'')).replace(/"/g,'""')+'"').join(',')).join('\n');}
+function downloadCsv(csv,fn){const b=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=fn;a.click();URL.revokeObjectURL(a.href);}
+function exportMeeting(){downloadCsv(rowsToCsv(buildMeetingRows()),'CSF_תמונת_מצב_'+new Date().toLocaleDateString('he-IL').replace(/\//g,'-')+'.csv');showToast('יוצא ✓');}
+function exportFull(){downloadCsv(rowsToCsv(buildMeetingRows()),'CSF_תמונת_מצב_'+new Date().toLocaleDateString('he-IL').replace(/\//g,'-')+'.csv');setTimeout(()=>{downloadCsv(rowsToCsv(buildHistoryRows()),'CSF_היסטוריה_'+new Date().toLocaleDateString('he-IL').replace(/\//g,'-')+'.csv');showToast('שני קבצים יוצאו ✓');},400);}
+
+loadData();
+renderSummary();
+renderGoals();
+</script>
+
+
+</body></html>
